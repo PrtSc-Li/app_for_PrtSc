@@ -422,13 +422,14 @@ input,textarea{user-select:text;-webkit-user-select:text}
 /* ===================================================================
  * 弹窗
  * =================================================================== */
-.modal{position:fixed;inset:0;z-index:200;display:flex;align-items:flex-end}
+.modal{position:fixed;inset:0;z-index:999;display:flex;align-items:flex-end}
 .modal.hidden{display:none}
 .modal-mask{position:absolute;inset:0;background:rgba(0,0,0,0.35)}
 .modal-sheet{
   position:relative;width:100%;max-height:80vh;overflow-y:auto;
   background:var(--bg2);border-radius:var(--r-lg) var(--r-lg) 0 0;
-  padding-bottom:var(--safe-bottom);animation:slideUp 0.35s cubic-bezier(0.32,0.72,0,1);
+  padding-bottom:calc(var(--safe-bottom) + var(--tab-h) + 8px);
+  animation:slideUp 0.35s cubic-bezier(0.32,0.72,0,1);
 }
 .modal-head{
   display:flex;align-items:center;justify-content:space-between;

@@ -289,11 +289,24 @@
     photoInput.addEventListener('change', function(){
       var file = photoInput.files[0];
       if (!file) return;
+      // Canvas 压缩图片后存储，避免 data URL 过大
+      var img = new Image();
       var reader = new FileReader();
       reader.onload = function(e){
-        o.photo = e.target.result; o.icon = '';
-        save(outfits);
-        renderDetail(sid, container);
+        img.onload = function(){
+          var maxW = 400;
+          var scale = Math.min(1, maxW / img.width);
+          var w = Math.round(img.width * scale);
+          var h = Math.round(img.height * scale);
+          var canvas = document.createElement('canvas');
+          canvas.width = w; canvas.height = h;
+          var ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, w, h);
+          o.photo = canvas.toDataURL('image/jpeg', 0.75); o.icon = '';
+          save(outfits);
+          renderDetail(sid, container);
+        };
+        img.src = e.target.result;
       };
       reader.readAsDataURL(file);
     });
