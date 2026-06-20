@@ -4,7 +4,7 @@
 (function () {
   'use strict';
   var KEY = 'outfits_v2';
-  var DATA_VER = 2;
+  var DATA_VER = 3;
 
   var CATEGORIES = ['限时六星','陪跑五星','限时五星','盲盒','潮流密码'];
 
@@ -45,10 +45,66 @@
     { id:'s025', name:'白虎',   fullName:'寅雪渡尘', icon:'🐯', category:'限时六星', release:'2026/2/3',  rerun1:'', rerun2:'' },
     { id:'s026', name:'美杜莎', fullName:'湮世瞳华', icon:'🐍', category:'限时六星', release:'2026/3/17', rerun1:'', rerun2:'' },
     { id:'s027', name:'百合',   fullName:'岩塑花契', icon:'🪻', category:'限时六星', release:'2026/4/28', rerun1:'', rerun2:'' },
-    { id:'s028', name:'小羊',   fullName:'蕃神春醺', icon:'🐑', category:'限时六星', release:'2026/6/9',  rerun1:'', rerun2:'' }
+    { id:'s028', name:'小羊',   fullName:'蕃神春醺', icon:'🐑', category:'限时六星', release:'2026/6/9',  rerun1:'', rerun2:'' },
+    { id:'s029', name:'敦煌', fullName:'卧月灼莲', icon:'👘', category:'限时五星', release:'2023/4/13', rerun1:'2024/8/15', rerun2:'2025/9/23' },
+    { id:'s030', name:'华廷', fullName:'盛世华廷', icon:'🏯', category:'限时五星', release:'2023/4/13', rerun1:'2024/8/15', rerun2:'2025/9/23' },
+    { id:'s031', name:'小魔女', fullName:'莫佳娜的礼物', icon:'🧙', category:'限时五星', release:'2023/5/25', rerun1:'2024/9/27', rerun2:'2025/8/12' },
+    { id:'s032', name:'大魔女', fullName:'倪克斯夜蔷', icon:'🌹', category:'限时五星', release:'2023/5/25', rerun1:'2024/9/27', rerun2:'2025/8/12' },
+    { id:'s033', name:'兔兔', fullName:'绒兔心语', icon:'🐰', category:'限时五星', release:'2023/7/6', rerun1:'2025/3/12', rerun2:'2026/3/10' },
+    { id:'s034', name:'熊猫', fullName:'酣竹滚滚', icon:'🐼', category:'限时五星', release:'2023/7/6', rerun1:'2025/3/12', rerun2:'2026/3/10' },
+    { id:'s035', name:'中婚', fullName:'鸾俦夙缘', icon:'💒', category:'限时五星', release:'2023/8/16', rerun1:'2025/4/23', rerun2:'2026/1/27' },
+    { id:'s036', name:'冥婚', fullName:'痴梦无诉', icon:'🕯️', category:'限时五星', release:'2023/8/16', rerun1:'2025/4/23', rerun2:'2026/1/27' },
+    { id:'s037', name:'精灵', fullName:'幻涟缀羽', icon:'🧝', category:'限时五星', release:'2023/9/27', rerun1:'2024/11/8', rerun2:'' },
+    { id:'s038', name:'苗疆', fullName:'月银九歌', icon:'🪷', category:'限时五星', release:'2023/9/27', rerun1:'2024/11/8', rerun2:'' },
+    { id:'s039', name:'美神', fullName:'阿芙洛之绪', icon:'🕊️', category:'限时五星', release:'2023/11/8', rerun1:'2024/12/20', rerun2:'2025/11/4' },
+    { id:'s040', name:'芭蕾', fullName:'湖心旋舞', icon:'🩰', category:'限时五星', release:'2023/11/8', rerun1:'2024/12/20', rerun2:'2025/11/4' },
+    { id:'s041', name:'小鹿', fullName:'驯鹿精灵', icon:'🦌', category:'限时五星', release:'2023/12/21', rerun1:'', rerun2:'' },
+    { id:'s042', name:'和服', fullName:'樱雪春祈', icon:'👘', category:'限时五星', release:'2023/12/21', rerun1:'', rerun2:'' },
+    { id:'s043', name:'魔兔', fullName:'沉梦魔咒', icon:'🐇', category:'限时五星', release:'2024/1/31', rerun1:'2025/1/28', rerun2:'2025/12/16' },
+    { id:'s044', name:'孔雀', fullName:'金翎浮年', icon:'🦚', category:'限时五星', release:'2024/1/31', rerun1:'2025/1/28', rerun2:'2025/12/16' },
+    { id:'s045', name:'库洛米', fullName:'酷巧甜心', icon:'🐱', category:'限时五星', release:'2024/3/13', rerun1:'', rerun2:'' },
+    { id:'s046', name:'玉桂狗', fullName:'告白奶芙', icon:'🐶', category:'限时五星', release:'2024/3/13', rerun1:'', rerun2:'' },
+    { id:'s047', name:'I号机', fullName:'I号机', icon:'🤖', category:'限时五星', release:'2024/4/24', rerun1:'2025/11/19', rerun2:'' },
+    { id:'s048', name:'吉普赛', fullName:'吟游沙语', icon:'🪶', category:'限时五星', release:'2024/4/24', rerun1:'2025/11/19', rerun2:'' },
+    { id:'s049', name:'蝴蝶', fullName:'雪色蝶舞', icon:'🦋', category:'限时五星', release:'2024/6/5', rerun1:'2025/6/4', rerun2:'2026/4/21' },
+    { id:'s050', name:'贵妇', fullName:'影幕华宴', icon:'💃', category:'限时五星', release:'2024/6/5', rerun1:'2025/6/4', rerun2:'2026/4/21' },
+    { id:'s051', name:'国潮', fullName:'虚数戏梦', icon:'🏮', category:'限时五星', release:'2024/7/17', rerun1:'', rerun2:'' },
+    { id:'s052', name:'军装', fullName:'恒星纪元', icon:'👔', category:'限时五星', release:'2024/7/17', rerun1:'', rerun2:'' },
+    { id:'s053', name:'月神', fullName:'幻月神裁', icon:'🌙', category:'限时五星', release:'2024/8/28', rerun1:'2025/7/16', rerun2:'2026/6/2' },
+    { id:'s054', name:'恶魔', fullName:'赦罪永寐', icon:'😈', category:'限时五星', release:'2024/8/28', rerun1:'2025/7/16', rerun2:'2026/6/2' },
+    { id:'s055', name:'提灯', fullName:'噤声夜谭', icon:'🏮', category:'限时五星', release:'2024/10/9', rerun1:'2025/10/8', rerun2:'' },
+    { id:'s056', name:'豹豹', fullName:'蜜色蚀心', icon:'🐆', category:'限时五星', release:'2024/10/9', rerun1:'2025/10/8', rerun2:'' },
+    { id:'s057', name:'舞娘', fullName:'辰祈夜谭', icon:'💃', category:'限时五星', release:'2024/11/20', rerun1:'2025/8/27', rerun2:'' },
+    { id:'s058', name:'钥匙', fullName:'星钥寻踪', icon:'🗝️', category:'限时五星', release:'2024/11/20', rerun1:'2025/8/27', rerun2:'' },
+    { id:'s059', name:'格桑花', fullName:'绯雪萦心', icon:'🌸', category:'限时五星', release:'2025/1/1', rerun1:'2025/12/31', rerun2:'' },
+    { id:'s060', name:'藏袍', fullName:'金羚曜日', icon:'🐏', category:'限时五星', release:'2025/1/1', rerun1:'2025/12/31', rerun2:'' },
+    { id:'s061', name:'剪刀', fullName:'甘戮天使', icon:'✂️', category:'限时五星', release:'2025/2/12', rerun1:'2026/5/6', rerun2:'' },
+    { id:'s062', name:'双枪', fullName:'魔猎执事', icon:'🔫', category:'限时五星', release:'2025/2/12', rerun1:'2026/5/6', rerun2:'' },
+    { id:'s063', name:'水晶', fullName:'芯璃絮语', icon:'💎', category:'限时五星', release:'2025/3/25', rerun1:'2026/2/11', rerun2:'' },
+    { id:'s064', name:'帝政', fullName:'枫露晨祷', icon:'👑', category:'限时五星', release:'2025/3/25', rerun1:'2026/2/11', rerun2:'' },
+    { id:'s065', name:'船长', fullName:'绯海掠影', icon:'⚓', category:'限时五星', release:'2025/5/6', rerun1:'', rerun2:'' },
+    { id:'s066', name:'女巫', fullName:'禁忌咒魇', icon:'🧙', category:'限时五星', release:'2025/5/6', rerun1:'', rerun2:'' },
+    { id:'s067', name:'蜘蛛', fullName:'绯蕾魔丝', icon:'🕷️', category:'限时五星', release:'2025/6/17', rerun1:'2026/3/25', rerun2:'' },
+    { id:'s068', name:'蚂蚁', fullName:'血誓荆棘', icon:'🐜', category:'限时五星', release:'2025/6/17', rerun1:'2026/3/25', rerun2:'' },
+    { id:'s069', name:'甄嬛', fullName:'雪映梅妆', icon:'👘', category:'限时五星', release:'2025/7/29', rerun1:'', rerun2:'' },
+    { id:'s070', name:'华妃', fullName:'凤仪万千', icon:'🔥', category:'限时五星', release:'2025/7/29', rerun1:'', rerun2:'' },
+    { id:'s071', name:'岩浆', fullName:'冥焰熔骨', icon:'🕊️', category:'限时五星', release:'2025/9/9', rerun1:'', rerun2:'' },
+    { id:'s072', name:'石膏', fullName:'羽陨圣卉', icon:'🌸', category:'限时五星', release:'2025/9/9', rerun1:'', rerun2:'' },
+    { id:'s073', name:'小樱白套', fullName:'透明序曲', icon:'🔮', category:'限时五星', release:'2025/10/21', rerun1:'', rerun2:'' },
+    { id:'s074', name:'小樱红套', fullName:'封印解除', icon:'🐍', category:'限时五星', release:'2025/10/21', rerun1:'', rerun2:'' },
+    { id:'s075', name:'骨蛇', fullName:'幽骨蚀光', icon:'❄️', category:'限时五星', release:'2025/12/2', rerun1:'', rerun2:'' },
+    { id:'s076', name:'雪花', fullName:'冰璃琉心', icon:'🦋', category:'限时五星', release:'2025/12/2', rerun1:'', rerun2:'' },
+    { id:'s077', name:'飞蛾', fullName:'星蛾灼穹', icon:'🏮', category:'限时五星', release:'2026/1/13', rerun1:'', rerun2:'' },
+    { id:'s078', name:'焚灯', fullName:'翎羽焚灯', icon:'🌿', category:'限时五星', release:'2026/1/13', rerun1:'', rerun2:'' },
+    { id:'s079', name:'春神', fullName:'绮野仙踪', icon:'🎂', category:'限时五星', release:'2026/2/24', rerun1:'', rerun2:'' },
+    { id:'s080', name:'兔偶', fullName:'兔铃谣梦', icon:'📖', category:'限时五星', release:'2026/2/24', rerun1:'', rerun2:'' },
+    { id:'s081', name:'零号机', fullName:'零号塞壬', icon:'🦅', category:'限时五星', release:'2026/4/7', rerun1:'', rerun2:'' },
+    { id:'s082', name:'蛋糕', fullName:'恋恋香颂', icon:'👘', category:'限时五星', release:'2026/4/7', rerun1:'', rerun2:'' },
+    { id:'s083', name:'书灵', fullName:'籍梦载年', icon:'🏯', category:'限时五星', release:'2026/5/19', rerun1:'', rerun2:'' },
+    { id:'s084', name:'凤凰', fullName:'玄凰引昼', icon:'🧙', category:'限时五星', release:'2026/5/19', rerun1:'', rerun2:'' }
   ];
 
-  BUILTIN.forEach(function(o){ if(!o.status) o.status = '未抽齐'; });
+  BUILTIN.forEach(function(o){ if(!o.status) o.status = '未抽齐'; if(!o.photo) o.photo = ''; });
 
   function get() {
     var data = Storage.get(KEY, null);
@@ -71,32 +127,53 @@
   }
 
   // ===== 列表 =====
+  // 获取"最近复刻时间"（有复刻取最新复刻，否则取首发）
+  function latestRerun(o) { return o.rerun2 || o.rerun1 || o.release; }
+
   function renderList(container) {
     var outfits = get();
     var activeCat = container._activeCat || '全部';
     var activeStatuses = container._activeStatuses || STATUSES.map(function(s){return s.key;});
-    container._activeCat = activeCat; container._activeStatuses = activeStatuses;
+    var sortMode = container._sortMode || 'release-desc';
+    container._activeCat = activeCat; container._activeStatuses = activeStatuses; container._sortMode = sortMode;
 
-    var filtered = outfits.filter(function(o){
+    // 排序
+    var sorted = outfits.slice().sort(function(a,b){
+      var va, vb;
+      if (sortMode === 'rerun-desc')      { va = latestRerun(a); vb = latestRerun(b); return vb.localeCompare(va); }
+      if (sortMode === 'rerun-asc')       { va = latestRerun(a); vb = latestRerun(b); return va.localeCompare(vb); }
+      if (sortMode === 'release-asc')     { return a.release.localeCompare(b.release); }
+      /* release-desc (default) */         { return b.release.localeCompare(a.release); }
+    });
+
+    var filtered = sorted.filter(function(o){
       if (activeCat !== '全部' && o.category !== activeCat) return false;
       if (activeStatuses.indexOf(o.status||'未抽齐') === -1) return false;
       return true;
     });
     var catCounts = {};
     outfits.forEach(function(o){ catCounts[o.category]=(catCounts[o.category]||0)+1; });
-    var grouped = groupByCategory(filtered, activeCat==='全部');
+    var grouped = activeCat === '全部'
+      ? (filtered.length > 0 ? [{ cat: null, items: filtered }] : [])
+      : groupByCategory(filtered, false);
+
+    // 排序标签
+    var sortLabels = { 'release-desc':'首发 ↓', 'release-asc':'首发 ↑', 'rerun-desc':'复刻 ↓', 'rerun-asc':'复刻 ↑' };
 
     container.innerHTML = '<div class="page">'+
-      '<div class="filter-bar" id="filter-bar">'+
-        '<button class="filter-chip'+(activeCat==='全部'?' active':'')+'" data-cat="全部"><small>'+outfits.length+'</small></button>'+
+      '<div class="filter-row">'+
+        '<div class="filter-bar" id="filter-bar">'+
+          '<button class="filter-chip'+(activeCat==='全部'?' active':'')+'" data-cat="全部"><small>'+outfits.length+'</small></button>'+
         CATEGORIES.map(function(cat){ var n=catCounts[cat]||0; return '<button class="filter-chip'+(activeCat===cat?' active':'')+'" data-cat="'+cat+'">'+cat+(n>0?' <small>'+n+'</small>':'')+'</button>'; }).join('')+
+        '</div>'+
+        '<button class="sort-btn" id="sort-toggle">'+sortLabels[sortMode]+'</button>'+
       '</div>'+
       '<div class="filter-info" id="status-filter-toggle">'+
         '<span>🔍 '+(activeStatuses.length===STATUSES.length?'全部状态':activeStatuses.length+' 种状态')+'（共 '+filtered.length+' 件）</span>'+
         '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>'+
       '<div class="suit-list" id="suit-list">'+(filtered.length===0
         ? '<div class="empty-cute">✨<br>没有符合条件的套装<br><span>试试调整筛选条件</span></div>'
-        : grouped.map(function(group){ return (activeCat==='全部'?'<div class="group-label">'+group.cat+' · '+(catCounts[group.cat]||0)+'件</div>':'')+group.items.map(function(o){ var st=getStatus(o.status); return '<div class="suit-card" data-id="'+o.id+'"><div class="suit-icon">'+(o.icon||'👑')+'</div><div class="suit-info"><div class="suit-name">'+esc(o.name)+'</div><div class="suit-sub">'+esc(o.fullName)+' · '+o.release+'</div></div><button class="suit-status" style="--st-color:'+st.color+';--st-bg:'+st.bg+'" data-id="'+o.id+'">'+st.key+'</button></div>'; }).join(''); }).join(''))+
+        : grouped.map(function(group){ return (group.cat?'<div class="group-label">'+group.cat+' · '+(catCounts[group.cat]||0)+'件</div>':'')+group.items.map(function(o){ var st=getStatus(o.status); var imgHtml = o.photo ? '<div class="sc-photo" style="background-image:url('+o.photo+')"></div>' : '<div class="sc-emoji">'+(o.icon||'👑')+'</div>'; return '<div class="suit-card-v" data-id="'+o.id+'">'+imgHtml+'<div class="sc-body"><div class="suit-name">'+esc(o.name)+'</div><div class="suit-sub">'+esc(o.fullName)+' · '+o.release+'</div></div><button class="suit-status" style="--st-color:'+st.color+';--st-bg:'+st.bg+'" data-id="'+o.id+'">'+st.key+'</button></div>'; }).join(''); }).join(''))+
       '</div>'+
       '<div class="modal hidden" id="status-filter-sheet"><div class="modal-mask"></div><div class="modal-sheet">'+
         '<div class="modal-head"><span class="modal-title">按状态筛选</span><button class="modal-save" id="sf-done">完成</button></div>'+
@@ -118,11 +195,17 @@
       var chip=e.target.closest('.filter-chip'); if(!chip)return;
       c._activeCat=chip.getAttribute('data-cat'); renderList(c); document.querySelector('.app-content').scrollTop=0;
     });
+    c.querySelector('#sort-toggle').addEventListener('click', function(){
+      var modes = ['release-desc','release-asc','rerun-desc','rerun-asc'];
+      var idx = modes.indexOf(c._sortMode||'release-desc');
+      c._sortMode = modes[(idx+1)%4];
+      renderList(c);
+    });
     c.querySelector('#status-filter-toggle').addEventListener('click', function(){ showFilterSheet(c); });
     c.querySelector('#sf-done').addEventListener('click', function(){ c.querySelector('#status-filter-sheet').classList.add('hidden'); });
     c.querySelector('#status-filter-sheet .modal-mask').addEventListener('click', function(){ c.querySelector('#status-filter-sheet').classList.add('hidden'); });
     c.querySelector('#suit-list').addEventListener('click', function(e){
-      var sb=e.target.closest('.suit-status'), card=e.target.closest('.suit-card');
+      var sb=e.target.closest('.suit-status'), card=e.target.closest('.suit-card-v');
       if(sb){ e.stopPropagation(); var o=outfits.find(function(x){return x.id===sb.getAttribute('data-id');}); if(o)showStatusPicker(c,o,outfits,false); }
       else if(card){ Router.go('outfits',{outfitId:card.getAttribute('data-id')}); }
     });
@@ -154,7 +237,13 @@
     container.innerHTML = '<div class="page">'+
       '<button class="back-btn" id="detail-back">← 返回列表</button>'+
       '<div class="detail-hero-new">'+
-        '<div class="d-icon-wrap"><div class="d-icon">'+o.icon+'</div></div>'+
+        '<div class="d-photo-wrap" id="detail-photo">'+
+          (o.photo
+            ? '<div class="d-photo" style="background-image:url('+o.photo+')"></div>'
+            : '<div class="d-photo-emoji">'+o.icon+'</div>')+
+          '<div class="d-photo-hint">📷 点击拍照</div>'+
+        '</div>'+
+        '<input type="file" accept="image/*" capture="environment" id="photo-input" style="display:none">'+
         '<h2 class="d-name">'+esc(o.name)+'</h2>'+
         '<p class="d-fullname">'+esc(o.fullName)+'</p>'+
         '<div class="d-meta-row"><span class="d-meta-tag">'+o.category+'</span><span class="d-meta-sep">·</span><span class="d-meta-date">首发 '+o.release+'</span></div>'+
@@ -175,6 +264,21 @@
 
     // 返回
     container.querySelector('#detail-back').addEventListener('click', function(){ window.history.back(); });
+    // 拍照
+    var photoWrap = container.querySelector('#detail-photo');
+    var photoInput = container.querySelector('#photo-input');
+    photoWrap.addEventListener('click', function(){ photoInput.click(); });
+    photoInput.addEventListener('change', function(){
+      var file = photoInput.files[0];
+      if (!file) return;
+      var reader = new FileReader();
+      reader.onload = function(e){
+        o.photo = e.target.result;
+        save(outfits);
+        renderDetail(sid, container);
+      };
+      reader.readAsDataURL(file);
+    });
     // 状态按钮
     container.querySelector('#detail-status').addEventListener('click', function(){ showStatusPicker(container, o, outfits, true); });
     // 状态芯片
