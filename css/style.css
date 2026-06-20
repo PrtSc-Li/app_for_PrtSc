@@ -1,0 +1,447 @@
+/* ===================================================================
+ * CSS 自定义属性 — 设计令牌
+ * =================================================================== */
+:root {
+  /* Safe Area（仅 iOS 独立模式下有值，浏览器中为 0px） */
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-left: env(safe-area-inset-left, 0px);
+  --safe-area-right: env(safe-area-inset-right, 0px);
+
+  /* 布局尺寸 */
+  --navbar-height: 44px;
+  --tabbar-height: 50px;
+  --header-total: calc(var(--safe-area-top) + var(--navbar-height));
+  --footer-total: calc(var(--safe-area-bottom) + var(--tabbar-height));
+
+  /* 浅色模式颜色 */
+  --bg-primary: #f2f2f7;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #e5e5ea;
+  --text-primary: #000000;
+  --text-secondary: #8e8e93;
+  --text-tertiary: #c7c7cc;
+  --separator-color: rgba(60, 60, 67, 0.12);
+  --header-bg: rgba(242, 242, 247, 0.85);
+  --footer-bg: rgba(242, 242, 247, 0.85);
+  --tint-color: #007aff;
+  --tab-inactive: #8e8e93;
+  --tab-active: #007aff;
+  --card-bg: #ffffff;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --danger-color: #ff3b30;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+}
+
+/* ===================================================================
+ * 暗色模式
+ * =================================================================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #000000;
+    --bg-secondary: #1c1c1e;
+    --bg-tertiary: #2c2c2e;
+    --text-primary: #ffffff;
+    --text-secondary: #8e8e93;
+    --text-tertiary: #48484a;
+    --separator-color: rgba(84, 84, 88, 0.65);
+    --header-bg: rgba(0, 0, 0, 0.85);
+    --footer-bg: rgba(0, 0, 0, 0.85);
+    --tint-color: #0a84ff;
+    --tab-inactive: #8e8e93;
+    --tab-active: #0a84ff;
+    --card-bg: #1c1c1e;
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    --danger-color: #ff453a;
+  }
+}
+
+/* ===================================================================
+ * 全局重置
+ * =================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+               'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  min-height: 100vh;
+  min-height: 100dvh;  /* 动态视口高度，解决 iOS 独立模式 100vh 滚动 bug */
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;       /* 阻止橡皮筋回弹干扰 */
+  -webkit-tap-highlight-color: transparent;  /* 去除 iOS 点击高亮 */
+  -webkit-touch-callout: none;     /* 禁止 iOS 长按弹出菜单 */
+  user-select: none;               /* 模拟原生 App 不可选择文本 */
+}
+
+/* 允许输入框等内容正常选择文本 */
+input, textarea, [contenteditable] {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+/* ===================================================================
+ * 安全区顶部占位
+ * =================================================================== */
+.safe-area-top {
+  height: var(--safe-area-top);
+  background-color: var(--header-bg);
+}
+
+/* ===================================================================
+ * 应用头部 — 毛玻璃导航栏
+ * =================================================================== */
+.app-header {
+  height: var(--navbar-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  padding-left: calc(16px + var(--safe-area-left));
+  padding-right: calc(16px + var(--safe-area-right));
+  background: var(--header-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);  /* iOS Safari 必需前缀 */
+  border-bottom: 0.5px solid var(--separator-color);
+}
+
+.app-title {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* ===================================================================
+ * 主内容区
+ * =================================================================== */
+.app-content {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;  /* iOS 动量滚动 */
+  padding: 0 16px;
+  padding-bottom: var(--footer-total);
+  scroll-behavior: smooth;
+}
+
+/* ===================================================================
+ * 离线横幅
+ * =================================================================== */
+.offline-banner {
+  background: var(--danger-color);
+  color: #ffffff;
+  text-align: center;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  margin-bottom: 12px;
+  animation: slideDown 0.3s ease-out;
+}
+
+.offline-banner.hidden {
+  display: none;
+}
+
+/* ===================================================================
+ * 安装提示（iOS 用户引导）
+ * =================================================================== */
+.install-hint {
+  position: fixed;
+  bottom: 100px;
+  left: 16px;
+  right: 16px;
+  z-index: 100;
+  animation: slideUp 0.4s ease-out;
+}
+
+.install-hint.hidden {
+  display: none;
+}
+
+.install-hint-content {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.install-hint-content p {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.install-hint-content p:first-child {
+  font-size: 17px;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+/* ===================================================================
+ * 更新横幅
+ * =================================================================== */
+.update-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--tint-color);
+  color: #ffffff;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 12px;
+  animation: slideDown 0.3s ease-out;
+}
+
+.update-banner.hidden {
+  display: none;
+}
+
+/* ===================================================================
+ * Hero 区域
+ * =================================================================== */
+.hero {
+  text-align: center;
+  padding: 32px 0 24px;
+}
+
+.app-icon-large {
+  font-size: 64px;
+  width: 96px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  background: var(--card-bg);
+  border-radius: 22px;
+  box-shadow: var(--card-shadow);
+}
+
+.hero h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: var(--text-secondary);
+}
+
+/* ===================================================================
+ * 功能卡片
+ * =================================================================== */
+.features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  padding: 20px 16px;
+  box-shadow: var(--card-shadow);
+  text-align: center;
+}
+
+.card-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.card h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.card p {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* ===================================================================
+ * 安装按钮区域
+ * =================================================================== */
+.install-actions {
+  text-align: center;
+  margin-top: 24px;
+}
+
+/* ===================================================================
+ * 按钮
+ * =================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;  /* Apple HIG 最小触摸目标 */
+  min-width: 44px;
+  padding: 10px 24px;
+  font-size: 17px;
+  font-weight: 500;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  -webkit-appearance: none;
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.btn:active {
+  opacity: 0.6;
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background: var(--tint-color);
+  color: #ffffff;
+}
+
+.btn-small {
+  min-height: 32px;
+  padding: 4px 12px;
+  font-size: 13px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border-radius: var(--radius-sm);
+}
+
+.install-btn.hidden {
+  display: none;
+}
+
+/* ===================================================================
+ * 底部导航栏
+ * =================================================================== */
+.app-footer {
+  padding-bottom: var(--safe-area-bottom);  /* 避开 Home Indicator */
+  background: var(--footer-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 0.5px solid var(--separator-color);
+}
+
+.tab-bar {
+  height: var(--tabbar-height);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 8px;
+}
+
+.tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-height: 44px;
+  color: var(--tab-inactive);
+  font-size: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  transition: color 0.2s;
+}
+
+.tab.active {
+  color: var(--tab-active);
+}
+
+.tab:active {
+  opacity: 0.6;
+}
+
+.tab-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.tab-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* ===================================================================
+ * PWA 独立模式适配
+ * =================================================================== */
+@media (display-mode: standalone) {
+  .install-hint {
+    display: none;  /* 已安装则不显示安装引导 */
+  }
+}
+
+/* 通过 JS 添加的 class，兼容 iOS（iOS 不支持 display-mode media query） */
+html.is-standalone .install-hint {
+  display: none;
+}
+
+/* ===================================================================
+ * 动画
+ * =================================================================== */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===================================================================
+ * 响应式调整
+ * =================================================================== */
+@media (min-width: 768px) {
+  .features {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .app-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .app-content {
+    max-width: 800px;
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "My PWA",
+  "short_name": "My PWA",
+  "description": "一个可在 iPhone 上安装使用的 PWA 应用模板",
+  "id": "/?source=pwa",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#f2f2f7",
+  "background_color": "#f2f2f7",
+  "categories": ["productivity"],
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "首页",
+      "url": "./",
+      "description": "回到首页"
+    }
+  ]
+}
