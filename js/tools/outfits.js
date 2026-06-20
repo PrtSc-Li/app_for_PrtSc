@@ -241,9 +241,9 @@
           (o.photo
             ? '<div class="d-photo" style="background-image:url('+o.photo+')"></div>'
             : '<div class="d-photo-emoji">'+o.icon+'</div>')+
-          '<div class="d-photo-hint">📷 点击拍照</div>'+
+          '<div class="d-photo-hint">📷 点击更换</div>'+
         '</div>'+
-        '<input type="file" accept="image/*" capture="environment" id="photo-input" style="display:none">'+
+        '<input type="file" accept="image/*" id="photo-input" style="display:none">'+
         '<h2 class="d-name">'+esc(o.name)+'</h2>'+
         '<p class="d-fullname">'+esc(o.fullName)+'</p>'+
         '<div class="d-meta-row"><span class="d-meta-tag">'+o.category+'</span><span class="d-meta-sep">·</span><span class="d-meta-date">首发 '+o.release+'</span></div>'+
@@ -264,20 +264,49 @@
 
     // 返回
     container.querySelector('#detail-back').addEventListener('click', function(){ window.history.back(); });
-    // 拍照
+    // 照片/emoji 选择
     var photoWrap = container.querySelector('#detail-photo');
     var photoInput = container.querySelector('#photo-input');
-    photoWrap.addEventListener('click', function(){ photoInput.click(); });
+    var photoActions = document.createElement('div');
+    photoActions.className = 'modal hidden';
+    photoActions.id = 'photo-actions';
+    photoActions.innerHTML = '<div class="modal-mask"></div><div class="modal-sheet">'+
+      '<div class="modal-head"><span class="modal-title">更换图片</span><button class="modal-cancel" id="pa-close">取消</button></div>'+
+      '<button class="pa-row" id="pa-album">🖼️ 从相册上传</button>'+
+      '<button class="pa-row" id="pa-emoji">😊 自定义 Emoji</button>'+
+    '</div>';
+    container.appendChild(photoActions);
+
+    photoWrap.addEventListener('click', function(){ photoActions.classList.remove('hidden'); });
+    photoActions.querySelector('#pa-close').addEventListener('click', function(){ photoActions.classList.add('hidden'); });
+    photoActions.querySelector('.modal-mask').addEventListener('click', function(){ photoActions.classList.add('hidden'); });
+
+    // 从相册上传
+    photoActions.querySelector('#pa-album').addEventListener('click', function(){
+      photoActions.classList.add('hidden');
+      photoInput.click();
+    });
     photoInput.addEventListener('change', function(){
       var file = photoInput.files[0];
       if (!file) return;
       var reader = new FileReader();
       reader.onload = function(e){
-        o.photo = e.target.result;
+        o.photo = e.target.result; o.icon = '';
         save(outfits);
         renderDetail(sid, container);
       };
       reader.readAsDataURL(file);
+    });
+
+    // 自定义 Emoji
+    photoActions.querySelector('#pa-emoji').addEventListener('click', function(){
+      photoActions.classList.add('hidden');
+      var emoji = prompt('输入一个 Emoji：', o.icon || '👑');
+      if (emoji && emoji.trim()) {
+        o.icon = emoji.trim(); o.photo = '';
+        save(outfits);
+        renderDetail(sid, container);
+      }
     });
     // 状态按钮
     container.querySelector('#detail-status').addEventListener('click', function(){ showStatusPicker(container, o, outfits, true); });

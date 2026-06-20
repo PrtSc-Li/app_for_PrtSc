@@ -14,8 +14,8 @@ from PIL import Image, ImageDraw
 OUTPUT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # ===== 配置颜色 =====
-BG_LIGHT = "#f2f2f7"
-BG_ICON = "#007aff"   # iOS 蓝
+BG_LIGHT = "#FFF0F3"
+BG_ICON = "#FF7BA6"   # 樱花粉
 FG_COLOR = "#ffffff"  # 白色前景
 
 def create_rounded_rect_mask(size, radius_ratio=0.2):
