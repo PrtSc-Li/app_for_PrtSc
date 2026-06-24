@@ -1,0 +1,35 @@
+{
+  "success": [
+    {
+      "name": "赤焰傲冕",
+      "nickname": "",
+      "file": "赤焰傲冕.jpg",
+      "page": "套装·赤焰傲冕",
+      "method": "选中页面最大图（海报）"
+    }
+  ],
+  "failed": [
+    {
+      "name": "天谪星砂",
+      "nickname": "",
+      "reason": "页面不存在（已尝试'套装·xxx'和直接名称）"
+    },
+    {
+      "name": "骑士终章",
+      "nickname": "",
+      "reason": "页面不存在（已尝试'套装·xxx'和直接名称）"
+    },
+    {
+      "name": "瓷赋霓裳",
+      "nickname": "",
+      "reason": "页面不存在（已尝试'套装·xxx'和直接名称）"
+    },
+    {
+      "name": "华廷靡曼",
+      "nickname": "",
+      "reason": "页面不存在（已尝试'套装·xxx'和直接名称）"
+    }
+  ],
+  "skipped": [],
+  "total": 5
+}

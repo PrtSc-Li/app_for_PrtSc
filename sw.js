@@ -20,8 +20,8 @@ const PRECACHE_URLS = [
   BASE + 'js/app.js',
   BASE + 'js/tools/registry.js',
   BASE + 'js/tools/outfits.js',
-  BASE + 'js/tools/items.js',
   BASE + 'js/tools/profile.js',
+  BASE + 'js/tools/notes.js',
   BASE + 'manifest.json',
   BASE + 'icons/icon-192x192.png',
   BASE + 'icons/icon-512x512.png'
